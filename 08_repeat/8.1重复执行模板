@@ -1,2 +1,14 @@
 无论是作为一个简单的优化，或作为工作的一部分批处理都是重复的行为，它为这些重复的行为制定策略并提供大量的迭代框架用来扩展，
 它包含RepeatOperations接口，RepeatOperations接口如下：
+
+public interface RepeatOperations {
+
+   RepeatStatus iterate(RepeatCallback callback) throws RepeatException;
+
+}
+回调是一个简单的接口允许你重复插入一些业务逻辑：
+public interface RepeatCallback {
+
+    RepeatStatus doInIteration(RepeatContext context) throws Exception;
+
+}
